@@ -70,6 +70,8 @@ public class Unit : MonoBehaviour {
         }
     }
 
+
+
     // Use this for initialization
     void Start () {
 		
@@ -81,16 +83,20 @@ public class Unit : MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, GetClosestUnit().transform.position, spd * Time.deltaTime);
         }
+        
 	}
-
     protected bool IsInRange(GameObject Enemy)
     {
         bool returnVal = false;
         if (Vector3.Distance(transform.position, Enemy.transform.position) <= range)
         {
-            return true;
+            returnVal = true;
         }
-        else return returnVal;
+        else
+        {
+            returnVal = false;
+        }
+        return returnVal;
     }
 
     protected GameObject GetClosestUnit()
@@ -99,13 +105,15 @@ public class Unit : MonoBehaviour {
         GameObject[] units = null;
         switch (team)
         {
-            case 1: GameObject.FindGameObjectsWithTag("team 2");
+            case 1:
+                GameObject.FindGameObjectsWithTag("team 2");
                 break;
-            case 2: GameObject.FindGameObjectsWithTag("team 1");
+            case 2:
+                GameObject.FindGameObjectsWithTag("team 1");
                 break;
         }
         float distance = 9999;
-        foreach(GameObject temp in units)
+        foreach (GameObject temp in units)
         {
             float tempDist = Vector3.Distance(transform.position, temp.transform.position);
             if (tempDist <= distance)
@@ -115,5 +123,15 @@ public class Unit : MonoBehaviour {
             }
         }
         return unit;
+    }
+
+    protected int Attack()
+    {
+        hp -= atk;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+        return atk;
     }
 }

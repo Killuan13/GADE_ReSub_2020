@@ -6,7 +6,7 @@ public class RangedUnit : Unit {
 
 	// Use this for initialization
 	void Start () {
-        hp = 10;
+        hp = 20;
         maxHp = hp;
         atk = 2;
         range = 2;
