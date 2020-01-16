@@ -15,9 +15,11 @@ public class RangedUnit : Unit {
         GetComponent<MeshRenderer>().material = mat[team - 1];
         switch (team)
         {
-            case 1: gameObject.tag = "team 1";
+            case 1:
+                gameObject.tag = "team 1";
                 break;
-            case 2: gameObject.tag = "team 2";
+            case 2:
+                gameObject.tag = "team 2";
                 break;
         }
 	}
