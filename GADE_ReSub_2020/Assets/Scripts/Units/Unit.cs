@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 
 public abstract class Unit : MonoBehaviour {
+    [SerializeField]protected Image healthBar;
     [SerializeField] protected int hp;
     [SerializeField] protected int maxHp;
     [SerializeField] protected int atk;
@@ -12,8 +13,8 @@ public abstract class Unit : MonoBehaviour {
     [SerializeField] protected int range;
     [SerializeField] protected int team;
     [SerializeField] protected Material[] mat;
-    
-    
+    int duration = 1;
+    float timer = 0;
     public int Hp
     {
         get
@@ -72,8 +73,6 @@ public abstract class Unit : MonoBehaviour {
         }
     }
 
-
-
     // Use this for initialization
     void Start () {
 		
@@ -84,6 +83,13 @@ public abstract class Unit : MonoBehaviour {
        if (!IsInRange(GetClosestUnit()))
         {
             transform.position = Vector3.MoveTowards(transform.position, GetClosestUnit().transform.position, spd * Time.deltaTime);
+        }
+        healthBar.fillAmount = (float)hp / maxHp;
+        timer += Time.deltaTime;
+        if (timer >= duration)
+        {
+            hp--;
+            timer = 0;
         }
     }
 

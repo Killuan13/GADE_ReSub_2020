@@ -15,6 +15,7 @@ public class WizardUnit : Unit {
         team = 3;
         gameObject.tag = "team 3";
         GetComponent<MeshRenderer>().material = mat[team];
+        healthBar = GetComponentsInChildren<Image>()[1];
     }
 	
 	// Update is called once per frame

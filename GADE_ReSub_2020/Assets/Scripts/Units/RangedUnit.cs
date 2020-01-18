@@ -14,6 +14,7 @@ public class RangedUnit : Unit {
         spd = 0.5f;
         team = Random.Range(1, 3);
         GetComponent<MeshRenderer>().material = mat[team - 1];
+        healthBar = GetComponentsInChildren<Image>()[1];
         switch (team)
         {
             case 1:
