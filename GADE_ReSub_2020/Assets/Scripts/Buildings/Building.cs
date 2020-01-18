@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour {
+public abstract class Building : MonoBehaviour {
     [SerializeField] protected int hp;
     [SerializeField] protected int maxHp;
     [SerializeField] protected int team;

@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Wizards : Unit {
+public class WizardUnit : Unit {
 
 	// Use this for initialization
 	void Start () {
-        hp = 20;
+        hp = 10;
         maxHp = hp;
-        atk = 4;
-        range = 2;
+        atk = 2;
+        range = 1;
         spd = 1;
         team = 3;
-        GetComponent<MeshRenderer>().material = mat[team - 1];
         gameObject.tag = "team 3";
-	}
+        GetComponent<MeshRenderer>().material = mat[team];
+    }
 	
 	// Update is called once per frame
 	void Update () {
